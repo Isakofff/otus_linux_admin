@@ -63,6 +63,10 @@ $ uname -r
 ```
 $ git clone https://github.com/Isakofff/otus_linux_admin.git
 $ cd otus_linux_admin
+$ mkdir rpm
+$ wget -P rpm/ https://s3.eu-central-1.amazonaws.com/isakov-bucket-01/kernel-3.16.65-1.x86_64.rpm
+$ wget -P rpm/ https://s3.eu-central-1.amazonaws.com/isakov-bucket-01/kernel-devel-3.16.65-1.x86_64.rpm
+$ wget -P rpm/ https://s3.eu-central-1.amazonaws.com/isakov-bucket-01/kernel-headers-3.16.65-1.x86_64.rpm
 $ vagrant up
 $ vagrant ssh
 $ uname -r
