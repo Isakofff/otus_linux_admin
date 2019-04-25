@@ -61,11 +61,11 @@ $ uname -r
 ## Vagrant with compiled kernel
 
 ```
-git clone https://github.com/Isakofff/otus_linux_admin.git
-cd otus_linux_admin
-vagrant up
-vagrant ssh
-uname -r
+$ git clone https://github.com/Isakofff/otus_linux_admin.git
+$ cd otus_linux_admin
+$ vagrant up
+$ vagrant ssh
+$ uname -r
 ```
 > 3.16.65
 
