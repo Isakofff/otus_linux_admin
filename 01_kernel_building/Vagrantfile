@@ -1,0 +1,16 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "centos/7"
+  config.vm.box_version = "1902.01"
+  
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 4024
+    v.cpus = 6
+  end
+
+  config.vm.provision :shell, inline: "rpm -i /vagrant/rpm/*.rpm && grub2-set-default 0 && shutdown -r now"
+end
+
+
