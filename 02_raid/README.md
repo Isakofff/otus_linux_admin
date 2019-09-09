@@ -16,12 +16,12 @@ $ lsblk
 yum install mdadm rsync
 
 # first we need to prepare /dev/sdb, to copy everything from /dev/sda and only after that we will able to add /dev/sda to our RAID
+
 # so let's start from partition table copy to new disk
 sfdisk -d /dev/sda | sfdisk /dev/sdb
 
 # now it should look identical
 fdisk -l 
-fdisk -l | grep /dev/sdb
 
 # create raid on new disk, at the moment only with ONE disk
 mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 missing /dev/sdb1
@@ -71,9 +71,12 @@ cat /boot/grub2/grub.cfg
 
 # just for visibility
 touch /thisIsTheRaidDrive
+
+# now we can restart
 shutdown -r now
 
-# Virtualbox: Fn+12 to access boot menu, to change second disk
+# choose second disk in bios boot menu; in Virtualbox press Fn+F12
+
 # check that now we are using /dev/md0 instead /dev/sda
 df -h
     # Файловая система Размер Использовано  Дост Использовано% Cмонтировано в
@@ -92,6 +95,7 @@ fdisk /dev/sda
 
 # add /dev/sda to our raid
 mdadm --manage /dev/md0 --add /dev/sda1
+
 # wait recovery process
 watch -n 1 "cat /proc/mdstat"
 
